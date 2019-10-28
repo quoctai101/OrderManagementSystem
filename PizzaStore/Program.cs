@@ -185,15 +185,14 @@ namespace PizzaStore
                         break;
                 }
             }
-            Console.Write(this.GetDescription());
         }
-        public string GetDescription()
+        public string GetBill()
         {
             var description = new StringBuilder();
             if (Drinks.Count == 0 && Pizzas.Count == 0) description.Append($"Thanks for visiting!\n");
             else
             {
-                description.Append($"Your bill: \n");
+                description.Append($"Your bill: \n\n");
                 double total = 0;
                 if (Pizzas.Count != 0)
                     foreach (Pizza pizza in Pizzas)
@@ -208,7 +207,7 @@ namespace PizzaStore
                         total += drink.GetPrice();
                     }
                 description.Append($"Total: {total:c}\n");
-                description.Append($"Thanks for buying!\n");
+                description.Append($"Thanks for buying!");
             }
             return description.ToString();
         }
@@ -219,6 +218,7 @@ namespace PizzaStore
         {
             Order cusOrder = new Order();
             cusOrder.GetOrder();
+            Console.WriteLine(cusOrder.GetBill());
             Console.ReadKey();
         }
     }
